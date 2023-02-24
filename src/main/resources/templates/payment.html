@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:insert = "blocks/header :: header"></div>
-<div class="row gy-3">
+<div  th:each="el : ${post}" class="row gy-3">
 
     <div class="col-md-6">
         <label for="cc-number" class="form-label">Адрес электронной почты</label>
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-    <a  class="btn btn-primary btn-lg px-4 me-md-2" href="/notification">Оплатить</a>
+    <a  class="btn btn-primary btn-lg px-4 me-md-2" th:href="'/home/' + ${el.id} + '/payment/notification'">Оплатить</a>
     </div>
 
 </body>

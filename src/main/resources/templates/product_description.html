@@ -16,7 +16,7 @@
         <p th:text="'Описание : ' + ${el.description}" class="lead"></p>
         <p th:text=" 'Цена: ' + ${el.price} + ' рублей'" class="lead"></p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <a  class="btn btn-primary btn-lg px-4 me-md-2" href="/payment">Купить</a>
+          <a  class="btn btn-primary btn-lg px-4 me-md-2" th:href="'/home/' + ${el.id} + '/payment'">Купить</a>
         </div>
       </div>
 </div>

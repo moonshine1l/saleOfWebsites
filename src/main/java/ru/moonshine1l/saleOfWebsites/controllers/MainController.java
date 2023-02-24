@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.moonshine1l.saleOfWebsites.models.Product;
 import ru.moonshine1l.saleOfWebsites.rep.ProductRepository;
@@ -33,14 +34,30 @@ public class MainController {
         return "product_description";
     }
 
-    @GetMapping("/payment")
-    public String payment(Model model){
-        model.addAttribute("title", "Оплата");
+    @GetMapping("home/{id}/payment")
+    public String payment(@PathVariable(value = "id") long id, Model model){
+        Optional<Product> post = productRepository.findById(id);
+        ArrayList<Product> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("post", res);
         return "payment";
     }
 
-    @GetMapping("/notification")
-    public String notification(){
+    @GetMapping("home/{id}/payment/notification")
+    public String notification(@PathVariable(value = "id") long id, Model model){
+        Optional<Product> post = productRepository.findById(id);
+        ArrayList<Product> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("post", res);
+        Product delpost = productRepository.findById(id).orElseThrow();
+        productRepository.delete(delpost);
         return "notification";
     }
+
+//    @PostMapping("/notification")
+//    public String delete(@PathVariable(value = "id") long id, Model model){
+//        Product delpost = productRepository.findById(id).orElseThrow();
+//        productRepository.delete(delpost);
+//        return "redirect :/home";
+//    }
 }
