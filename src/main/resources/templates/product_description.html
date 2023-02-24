@@ -11,14 +11,14 @@
   <div class="col-10 col-sm-8 col-lg-6">
     <img th:src="${el.image}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
   </div>
-  <div class="col-lg-6">
-    <h1 th:text="${el.title}" class="display-5 fw-bold lh-1 mb-3"></h1>
-    <p th:text="'Описание : ' + ${el.description}" class="lead"></p>
-    <p th:text=" 'Цена: ' + ${el.price} + ' рублей'" class="lead"></p>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-      <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Купить</button>
-    </div>
-  </div>
+      <div class="col-lg-6">
+        <h1 th:text="${el.title}" class="display-5 fw-bold lh-1 mb-3"></h1>
+        <p th:text="'Описание : ' + ${el.description}" class="lead"></p>
+        <p th:text=" 'Цена: ' + ${el.price} + ' рублей'" class="lead"></p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <a  class="btn btn-primary btn-lg px-4 me-md-2" href="/payment">Купить</a>
+        </div>
+      </div>
 </div>
 </body>
 <footer th:insert = "blocks/footer :: footer"></footer>

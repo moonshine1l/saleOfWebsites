@@ -32,4 +32,15 @@ public class MainController {
         model.addAttribute("post", res);
         return "product_description";
     }
+
+    @GetMapping("/payment")
+    public String payment(Model model){
+        model.addAttribute("title", "Оплата");
+        return "payment";
+    }
+
+    @GetMapping("/notification")
+    public String notification(){
+        return "notification";
+    }
 }
